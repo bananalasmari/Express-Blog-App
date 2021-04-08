@@ -4,6 +4,8 @@ const express = require('express');
 
 const router = express.Router();
 
+const moment = require('moment');
+
 // Import Model
 const Article = require("../models/Article");
 
@@ -42,7 +44,7 @@ router.get("/article/index", (req, res) => {
     // Find all Articles
     Article.find()
     .then(articles => {
-        res.render("article/index", {articles});
+        res.render("article/index", {articles, moment});
     })
     .catch(err => {
         console.log(err);
