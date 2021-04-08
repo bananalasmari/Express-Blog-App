@@ -10,8 +10,8 @@ const Article = require("../models/Article");
 // Grab the form data
 router.use(express.urlencoded({extended: true}));
 
-// HTTP GET - Retrive data from the database - R
-// HTTP POST - To send the data into the database - C
+// HTTP GET - Retrive data from the database - R 
+// HTTP POST - To send the data into the database - C - Done
 // HTTP PUT - TO update the data into the database - U
 // HTTP DELETE - To delete the data from the database - D
 
@@ -35,7 +35,18 @@ router.post("/article/add", (req, res) => {
         console.log(err);
         res.send("ERROR!!!");
     })
+})
 
+// HTTP GET - Article Index
+router.get("/article/index", (req, res) => {
+    // Find all Articles
+    Article.find()
+    .then(articles => {
+        res.render("article/index", {articles});
+    })
+    .catch(err => {
+        console.log(err);
+    })
 })
 
 module.exports = router;
