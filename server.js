@@ -4,8 +4,13 @@ const mongoose = require("mongoose");
 
 const PORT = 4000;
 
+const expresslayouts = require("express-ejs-layouts");
+
 // Initialize express
 const app = express();
+
+// Look into the views folder for layout.ejs file
+app.use(expresslayouts);
 
 // Import Routes
 const indexRoute = require('./routes/index');
