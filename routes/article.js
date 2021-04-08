@@ -51,4 +51,16 @@ router.get("/article/index", (req, res) => {
     })
 })
 
+// HTTP GET - Article by ID
+router.get("/article/detail", (req, res) => {
+    console.log(req.query.id);
+    Article.findById(req.query.id)
+    .then(article => {
+        res.render("article/detail", {article, moment});
+    })
+    .catch(err => {
+        console.log(err);
+    })
+})
+
 module.exports = router;

@@ -14,7 +14,11 @@
   <% articles.forEach(function(article){ %>
   <tr>
 
-    <td> <%= article.title %> </td>
+    <td> 
+        <a href="/article/detail?id=<%= article._id %>">
+        <%= article.title %> 
+        </a>
+    </td>
     <td> <%= article.content %> </td>
     <td> <%= article.isPublished %> </td>
     <td> <%= article.totalWords %> </td>

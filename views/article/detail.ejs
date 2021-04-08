@@ -1,0 +1,21 @@
+<h2><%= article.title %></h2>
+
+<div>
+    Content: <%= article.content %>
+</div>
+
+<div>
+    is Published: <%= article.isPublished %>
+</div>
+
+<div>
+    Total Words: <%= article.totalWords %>
+</div>
+
+<div>
+    Author: <%= article.author %>
+</div>
+
+<div>
+    Create At: <%= moment(article.createdAt).fromNow() %>
+</div>
