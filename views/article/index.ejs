@@ -8,25 +8,31 @@
     <th>Total Words</th>
     <th>Author</th>
     <th>Created At</th>
-  </tr>
 
+    <th>Edit</th>
+    <th>Delete</th>
+  </tr>
 
   <% articles.forEach(function(article){ %>
   <tr>
-
-    <td> 
-        <a href="/article/detail?id=<%= article._id %>">
-        <%= article.title %> 
-        </a>
+    <td>
+      <a href="/article/detail?id=<%= article._id %>"> <%= article.title %> </a>
     </td>
-    <td> <%= article.content %> </td>
-    <td> <%= article.isPublished %> </td>
-    <td> <%= article.totalWords %> </td>
-    <td> <%= article.author %> </td>
-    <td> <%= moment(article.createdAt).fromNow() %> </td>
+    <td><%= article.content %></td>
+    <td><%= article.isPublished %></td>
+    <td><%= article.totalWords %></td>
+    <td><%= article.author %></td>
+    <td><%= moment(article.createdAt).fromNow() %></td>
 
+    <td>Edit</td>
+    <td>
+      <a href="/article/delete?id=<%= article._id %>"> delete </a>
+
+      <form method="POST" action="/article/delete?id=<%= article._id
+      %>&_method=DELETE">
+        <button type="submit">Delete</button>
+    </form>
+    </td>
   </tr>
   <% }) %>
-
-
 </table>

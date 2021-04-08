@@ -6,6 +6,11 @@ const router = express.Router();
 
 const moment = require('moment');
 
+var methodOverride = require('method-override');
+
+// Use method override
+router.use(methodOverride('_method'));
+
 // Import Model
 const Article = require("../models/Article");
 
@@ -57,6 +62,17 @@ router.get("/article/detail", (req, res) => {
     Article.findById(req.query.id)
     .then(article => {
         res.render("article/detail", {article, moment});
+    })
+    .catch(err => {
+        console.log(err);
+    })
+})
+
+// HTTP DELETE - Article delete
+router.delete("/article/delete", (req, res) => {
+    Article.findByIdAndDelete(req.query.id)
+    .then(()=>{
+        res.redirect("/article/index");
     })
     .catch(err => {
         console.log(err);
