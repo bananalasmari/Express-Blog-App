@@ -9,6 +9,9 @@ const expresslayouts = require("express-ejs-layouts");
 // Initialize express
 const app = express();
 
+// Look for static files here in this folder
+app.use(express.static("public"));
+
 // Look into the views folder for layout.ejs file
 app.use(expresslayouts);
 
