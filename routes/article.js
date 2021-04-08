@@ -10,4 +10,9 @@ const router = express.Router();
 // HTTP DELETE - To delete the data from the database - D
 
 
+// HTTP GET - Load an Article Form
+router.get("/article/add", (req, res) => {
+    res.render("article/add");
+})
+
 module.exports = router;
