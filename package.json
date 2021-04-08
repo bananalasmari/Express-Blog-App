@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "Blog App",
   "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "scripts": { 
+    "test": "nodemon server"
   },
   "keywords": [],
-  "author": "",
+  "author": "Saad Iqbal",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
