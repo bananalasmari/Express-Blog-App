@@ -13,6 +13,10 @@ const indexRoute = require('./routes/index');
 // Mount Routes
 app.use('/', indexRoute);
 
+// Setting view engine to ejs.
+// Node.js to look into the folder views for all ejs files
+app.set("view engine", "ejs");
+
 mongoose.connect(
   "mongodb://localhost:27017/blogapp",
   {
