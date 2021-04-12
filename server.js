@@ -37,6 +37,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+// Sharing information to other pages
+app.use(function(req, res, next){
+    res.locals.currentUser = req.user;
+    next();
+})
+
 
 // Mount Routes
 app.use('/', indexRoute);

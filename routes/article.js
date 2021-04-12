@@ -48,6 +48,7 @@ router.post("/article/add", (req, res) => {
 
 // HTTP GET - Article Index
 router.get("/article/index", isLoggedIn,  (req, res) => {
+    // console.log(req.user);
     // Find all Articles
     Article.find()
     .then(articles => {
