@@ -20,10 +20,12 @@ app.use(expresslayouts);
 // Import Routes
 const indexRoute = require('./routes/index');
 const articleRoute = require('./routes/article');
+const authRoute = require('./routes/auth');
 
 // Mount Routes
 app.use('/', indexRoute);
 app.use('/', articleRoute);
+app.use('/', authRoute);
 
 // Setting view engine to ejs.
 // Node.js to look into the folder views for all ejs files
