@@ -48,6 +48,10 @@ router.post(
 );
 
 // HTTP GET - Logout Route
+router.get("/auth/logout", (req, res) => {
+    req.logout();
+    res.redirect("/auth/signin");
+})
 
 // HTTP GET - Load Profile
 
