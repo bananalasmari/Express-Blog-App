@@ -4,6 +4,9 @@ const router = require("express").Router();
 const bcrypt = require("bcrypt");
 const salt = 10;
 
+// Import passport configurations
+let passport = require("../helper/ppConfig");
+
 // Import User Model
 const User = require("../models/User");
 
@@ -37,6 +40,12 @@ router.get("/auth/signin", (req, res) => {
 });
 
 // HTTP POST - Signin Route - To login the user
+router.post(
+  "/auth/signin",
+  passport.authenticate("local", { 
+    successRedirect: "/",  
+    failureRedirect: "/auth/signin" })
+);
 
 // HTTP GET - Logout Route
 
