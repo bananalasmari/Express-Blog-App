@@ -26,7 +26,10 @@ router.post("/auth/signup", (req, res) => {
   user
     .save()
     .then(() => {
-      res.redirect("/");
+    //   res.redirect("/");
+    passport.authenticate("local", { 
+        successRedirect: "/",  
+        failureRedirect: "/auth/signin" })(req, res)
     })
     .catch((err) => {
       console.log(err);
@@ -50,6 +53,7 @@ router.post(
 // HTTP GET - Logout Route
 router.get("/auth/logout", (req, res) => {
     req.logout();
+    req.flash("error", "You are logged out successfully.");
     res.redirect("/auth/signin");
 })
 

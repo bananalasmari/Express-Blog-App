@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const PORT = process.env.PORT;
 
 const expresslayouts = require("express-ejs-layouts");
+var flash = require('connect-flash');
 
 // Initialize express
 const app = express();
@@ -37,9 +38,12 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(flash());
+
 // Sharing information to other pages
 app.use(function(req, res, next){
     res.locals.currentUser = req.user;
+    res.locals.alerts = req.flash();
     next();
 })
 
