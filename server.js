@@ -1,8 +1,10 @@
+require('dotenv').config()
+
 const express = require("express");
 
 const mongoose = require("mongoose");
 
-const PORT = 4000;
+const PORT = process.env.PORT;
 
 const expresslayouts = require("express-ejs-layouts");
 
@@ -28,7 +30,7 @@ app.use('/', articleRoute);
 app.set("view engine", "ejs");
 
 mongoose.connect(
-  "mongodb://localhost:27017/blogapp",
+  process.env.mongoDBURL,
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
