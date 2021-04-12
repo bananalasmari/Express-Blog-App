@@ -22,6 +22,22 @@ const indexRoute = require('./routes/index');
 const articleRoute = require('./routes/article');
 const authRoute = require('./routes/auth');
 
+// Express Session and Passport
+let session = require('express-session');
+let passport = require('./helper/ppConfig');
+
+app.use(session({
+    secret: process.env.SECRET,
+    saveUninitialized: true,
+    resave: false,
+    cookie: {maxAge: 360000}
+}))
+
+// Initialize Passport and Passport Session
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 // Mount Routes
 app.use('/', indexRoute);
 app.use('/', articleRoute);
