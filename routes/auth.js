@@ -21,16 +21,23 @@ router.post(
   "/auth/signup",
   [
     // Checks for the firstName
-    body("firstName").isLength({ min: 5 }),
+    body("firstName")
+    .notEmpty().withMessage("Firstname cannot be null")
+    .isLength({ min: 5 }).withMessage('FirstName should be atleast 5 characters long'),
 
     // Checks for the LastName
-    body("lastName").isLength({ min: 5 }),
+    body("lastName")
+    .notEmpty().withMessage("Lastname cannot be null")
+    .isLength({ min: 5 }).withMessage('LastName should be atleast 5 characters long'),
 
     // Checks for the emailAddress
-    body("emailAddress").isEmail(),
+    body("emailAddress")
+    .notEmpty().withMessage("EmailAddress cannot be null")
+    .isEmail().withMessage('Invalid Email Address'),
 
     // Checks for the password
-    body("password").isLength({ min: 5 })
+    body("password")
+    .isLength({ min: 5 }).withMessage('Passwords should be atleast 5 characters long')
   ],
   (req, res) => {
     // console.log(req.body);
