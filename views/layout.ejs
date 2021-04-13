@@ -29,6 +29,19 @@
     
         <% }) %> <% } %>
 
+
+
+        <% if(alerts.validationErrors) { %> 
+          <% alerts.validationErrors.forEach(function(msg){ %>
+
+          <div class="alert alert-danger">
+            Your <%= msg.param %> has <%= msg.msg %>
+          </div>
+      
+          <% }) %> <% } %>
+
+
+
     <nav>
       <a href="/article/index"> Articles </a>
       <a href="/article/add"> Add Article </a>
