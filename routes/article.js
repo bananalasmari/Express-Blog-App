@@ -8,6 +8,8 @@ const moment = require('moment');
 
 var methodOverride = require('method-override');
 
+const isLoggedIn = require("../helper/isLoggedIn");
+
 // Use method override
 router.use(methodOverride('_method'));
 
@@ -45,7 +47,8 @@ router.post("/article/add", (req, res) => {
 })
 
 // HTTP GET - Article Index
-router.get("/article/index", (req, res) => {
+router.get("/article/index", isLoggedIn,  (req, res) => {
+    // console.log(req.user);
     // Find all Articles
     Article.find()
     .then(articles => {
